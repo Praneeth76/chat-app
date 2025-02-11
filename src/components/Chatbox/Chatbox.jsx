@@ -77,6 +77,8 @@ function Chatbox() {
   const convertTimeStamp = (timestamp) => {
     if (!timestamp?.toDate) return "";
     let date = timestamp.toDate();
+    let day = date.getDate().toString().padStart(2, "0");
+    let month = (date.getMonth() + 1).toString().padStart(2, "0"); 
     let hour = date.getHours();
     let minute = date.getMinutes();
     let amPm = hour >= 12 ? "PM" : "AM";
@@ -84,8 +86,9 @@ function Chatbox() {
     hour = hour % 12 || 12;
     minute = minute.toString().padStart(2, "0");
 
-    return `${hour}:${minute} ${amPm}`;
-  };
+    return `${day}:${month} ${hour}:${minute} ${amPm}`;
+};
+
 
   const sendImage = async (e) => {
     try {
